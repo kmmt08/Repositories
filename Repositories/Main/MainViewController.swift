@@ -7,14 +7,17 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    var viewModel: MainViewController!
+    var viewModel: MainViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        initialSetup()
     }
     
+    private func initialSetup() {
+        viewModel.delegate = self
+        viewModel.search("e")
+    }
 
     /*
     // MARK: - Navigation
@@ -26,4 +29,10 @@ class MainViewController: UIViewController {
     }
     */
 
+}
+
+// MARK: - MainViewModel Protocol
+
+extension MainViewController: MainViewModelProtocol {
+    
 }
