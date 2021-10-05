@@ -44,12 +44,25 @@ extension MainViewController: MainViewModelProtocol {
             self.tableView.reloadData()
         }
     }
-}
-
-// MARK: - TextField Delegate
-
-extension MainViewController: UITextFieldDelegate {
     
+    func showLazyLoader() {
+        let spinner = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
+        spinner.frame = .init(x: 0,
+                              y: 0,
+                              width: tableView.bounds.width,
+                              height: 44)
+        spinner.startAnimating()
+        tableView.tableFooterView = spinner
+    }
+    
+    func hideLazyLoader() {
+        // Add delay to display loader properly
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+            self?.tableView.isHidden = false
+            self?.tableView.reloadData()
+            self?.tableView.tableFooterView = nil
+        }
+    }
 }
 
 // MARK: - TableView DataSource/Delegate
@@ -65,6 +78,10 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         }
         cell.displayData(viewModel.getCellData(at: indexPath.row))
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        viewModel.willDisplayCell(at: indexPath.row)
     }
 }
 

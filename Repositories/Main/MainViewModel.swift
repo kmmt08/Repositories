@@ -7,6 +7,8 @@ import Foundation
 
 protocol MainViewModelProtocol: AnyObject {
     func reloadTableView()
+    func showLazyLoader()
+    func hideLazyLoader()
 }
 
 class MainViewModel {
@@ -16,6 +18,7 @@ class MainViewModel {
     private var currentSearchText: String = ""
     private var nextPage: Int = 1
     private var hasNextPage: Bool = false
+    private var isLoading: Bool = false
     private var items: [SearchRespositories.Response.Items] = []
     
     private(set) var listCellData: [MainModel.CellDisplay] = [] {
@@ -29,7 +32,15 @@ class MainViewModel {
     }
     
     func search(_ text: String) {
+        if text != currentSearchText {
+            nextPage = 1
+            items = []
+            listCellData = []
+        }
+        currentSearchText = text
         searchService.getSearchRepositories(text, page: nextPage) { [weak self] result in
+            self?.delegate?.hideLazyLoader()
+            self?.isLoading = false
             switch result {
             case .success(let data):
                 self?.nextPage += 1
@@ -40,6 +51,7 @@ class MainViewModel {
                                              description: item.description))
                 }
                 self?.listCellData.append(contentsOf: newCellData)
+                self?.items.append(contentsOf: data.items)
             case .failure(let error):
                 print(error)
             }
@@ -48,5 +60,15 @@ class MainViewModel {
     
     func getCellData(at row: Int) -> MainModel.CellDisplay {
         return listCellData[row]
+    }
+    
+    func willDisplayCell(at row: Int) {
+        if row == listCellData.count - 1,
+           !isLoading,
+           hasNextPage {
+            delegate?.showLazyLoader()
+            isLoading = true
+            search(currentSearchText)
+        }
     }
 }
