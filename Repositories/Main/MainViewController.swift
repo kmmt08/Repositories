@@ -27,8 +27,6 @@ class MainViewController: UIViewController {
                 self?.tableView.reloadData()
             }
         }
-        // TODO: Remove
-        viewModel.search("al")
     }
 
     /*
@@ -68,5 +66,24 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         }
         cell.displayData(viewModel.getCellData(at: indexPath.row))
         return cell
+    }
+}
+
+// MARK: - SearchBar Delegate
+
+extension MainViewController: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        searchBar.resignFirstResponder()
+        viewModel.search(searchBar.text ?? "")
     }
 }
