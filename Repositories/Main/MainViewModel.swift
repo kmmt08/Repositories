@@ -6,13 +6,12 @@
 import Foundation
 
 protocol MainViewModelProtocol: AnyObject {
-    
+    func reloadTableView()
 }
 
-class MainViewModel: MainViewModelProtocol {
+class MainViewModel {
     private let searchService: SearchServiceProtocol
     weak var delegate: MainViewModelProtocol?
-    var reloadTableView: (() -> Void)?
     
     private var currentSearchText: String = ""
     private var nextPage: Int = 1
@@ -21,7 +20,7 @@ class MainViewModel: MainViewModelProtocol {
     
     private(set) var listCellData: [MainModel.CellDisplay] = [] {
         didSet {
-            reloadTableView?()
+            delegate?.reloadTableView()
         }
     }
     

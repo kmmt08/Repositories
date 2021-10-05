@@ -22,11 +22,6 @@ class MainViewController: UIViewController {
         viewModel.delegate = self
         tableView.register(UINib(nibName: String(describing: ListTableViewCell.self), bundle: nil),
                            forCellReuseIdentifier: ListTableViewCell.identifier)
-        viewModel.reloadTableView = { [weak self] in
-            DispatchQueue.main.async {
-                self?.tableView.reloadData()
-            }
-        }
     }
 
     /*
@@ -44,7 +39,11 @@ class MainViewController: UIViewController {
 // MARK: - MainViewModel Protocol
 
 extension MainViewController: MainViewModelProtocol {
-    
+    func reloadTableView() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
 }
 
 // MARK: - TextField Delegate
