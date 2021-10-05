@@ -6,6 +6,10 @@
 import UIKit
 
 class MainViewController: UIViewController {
+    @IBOutlet private weak var searchTextField: UITextField!
+    @IBOutlet private weak var tableView: UITableView!
+    
+    private let listCellIdentifier: String = "listCell"
     
     var viewModel: MainViewModel!
 
@@ -35,4 +39,18 @@ class MainViewController: UIViewController {
 
 extension MainViewController: MainViewModelProtocol {
     
+}
+
+// MARK: - TextField Delegate
+
+extension MainViewController: UITextFieldDelegate {
+    
+}
+
+// MARK: - TableView DataSource/Delegate
+
+extension MainViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+    }
 }
