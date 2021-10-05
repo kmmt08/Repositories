@@ -20,7 +20,7 @@ class DefaultService {
         urlRequest.httpMethod = httpMethod.rawValue
         urlRequest.timeoutInterval = 30
         urlRequest.cachePolicy = .reloadIgnoringCacheData
-        urlRequest.allHTTPHeaderFields = ["accept": "application/vnd.github.v3+json"]
+        urlRequest.allHTTPHeaderFields = ["Accept": "application/vnd.github.v3+json"]
         
         // Encoding
         do {
@@ -38,7 +38,7 @@ class DefaultService {
         return urlRequest
     }
     
-    func request<T: Decodable>(_ urlRequest: URLRequest, completion: @escaping (Result<Success<T>, ErrorResponse>) -> Void) {
+    func request<T: Decodable>(_ urlRequest: URLRequest, completion: @escaping (Result<T, ErrorResponse>) -> Void) {
         let task = session.dataTask(with: urlRequest) { data, urlResponse, error in
             guard error == nil else {
                 completion(Result.failure(ErrorResponse(code: nil,
@@ -61,7 +61,8 @@ class DefaultService {
             }
             
             if responseData.isEmpty {
-                completion(Result.success(.empty))
+                completion(Result.failure(ErrorResponse(code: nil,
+                                                        description: error?.localizedDescription ?? "No Data Error")))
             } else {
                 do {
                     // TODO: Remove
@@ -69,7 +70,7 @@ class DefaultService {
                     print(json)
                     
                     let decodedData = try JSONDecoder().decode(T.self, from: responseData)
-                    completion(Result.success(.data(data: decodedData)))
+                    completion(Result.success(decodedData))
                 } catch let error {
                     completion(Result.failure(ErrorResponse(code: nil,
                                                             description: error.localizedDescription)))
@@ -86,11 +87,6 @@ enum HttpMethod: String {
     case get = "GET"
     case post = "POST"
     case put = "PUT"
-}
-
-enum Success<T: Decodable> {
-    case empty
-    case data(data: T)
 }
 
 enum ResponseType {
