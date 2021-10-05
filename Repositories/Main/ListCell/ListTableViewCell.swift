@@ -2,22 +2,18 @@
 //  ListTableViewCell.swift
 //  Repositories
 //
-//  Created by karen.mae.m.tampes on 5/10/21.
-//
 
 import UIKit
 
 class ListTableViewCell: UITableViewCell {
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var descriptionLabel: UILabel!
+    
+    static let identifier: String = "listCell"
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func displayData(_ data: MainModel.CellDisplay) {
+        titleLabel.text = data.name
+        descriptionLabel.text = data.description
     }
     
 }

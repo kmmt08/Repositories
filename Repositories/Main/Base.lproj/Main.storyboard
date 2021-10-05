@@ -16,37 +16,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search repository" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rhB-ut-RKW">
-                                <rect key="frame" x="16" y="94" width="382" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Weq-tE-69f"/>
-                                </connections>
-                            </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OuH-7o-EJA">
-                                <rect key="frame" x="0.0" y="168" width="414" height="678"/>
+                                <rect key="frame" x="0.0" y="103" width="414" height="743"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="OfT-0n-qdP"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="SfD-LE-dTK"/>
                                 </connections>
                             </tableView>
+                            <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="IUM-gE-JP4">
+                                <rect key="frame" x="0.0" y="44" width="414" height="51"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OuH-7o-EJA" secondAttribute="trailing" id="3ni-5m-EJd"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="rhB-ut-RKW" secondAttribute="trailing" constant="16" id="8sE-jf-7OO"/>
-                            <constraint firstItem="rhB-ut-RKW" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="MYU-yf-BqP"/>
+                            <constraint firstItem="OuH-7o-EJA" firstAttribute="top" secondItem="IUM-gE-JP4" secondAttribute="bottom" constant="8" id="NTJ-tz-I4m"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="OuH-7o-EJA" secondAttribute="bottom" constant="16" id="SIS-qh-g1J"/>
-                            <constraint firstItem="rhB-ut-RKW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="TVr-Cp-f1N"/>
+                            <constraint firstItem="IUM-gE-JP4" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="X9t-BJ-oT8"/>
                             <constraint firstItem="OuH-7o-EJA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="XQQ-zZ-adY"/>
-                            <constraint firstItem="OuH-7o-EJA" firstAttribute="top" secondItem="rhB-ut-RKW" secondAttribute="bottom" constant="40" id="pV4-vP-2if"/>
+                            <constraint firstItem="IUM-gE-JP4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="rbf-gb-IR1"/>
+                            <constraint firstItem="IUM-gE-JP4" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="t6H-tv-lHm"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="searchTextField" destination="rhB-ut-RKW" id="OwV-jy-yTv"/>
+                        <outlet property="searchBar" destination="IUM-gE-JP4" id="LhJ-nC-fky"/>
                         <outlet property="tableView" destination="OuH-7o-EJA" id="CDO-An-p4F"/>
                     </connections>
                 </viewController>

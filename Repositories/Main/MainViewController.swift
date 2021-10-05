@@ -6,10 +6,10 @@
 import UIKit
 
 class MainViewController: UIViewController {
-    @IBOutlet private weak var searchTextField: UITextField!
+    @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private weak var tableView: UITableView!
     
-    private let listCellIdentifier: String = "listCell"
+    private let searchController: UISearchController = .init()
     
     var viewModel: MainViewModel!
 
@@ -20,7 +20,15 @@ class MainViewController: UIViewController {
     
     private func initialSetup() {
         viewModel.delegate = self
-        viewModel.search("e")
+        tableView.register(UINib(nibName: String(describing: ListTableViewCell.self), bundle: nil),
+                           forCellReuseIdentifier: ListTableViewCell.identifier)
+        viewModel.reloadTableView = { [weak self] in
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
+        }
+        // TODO: Remove
+        viewModel.search("al")
     }
 
     /*
@@ -50,7 +58,15 @@ extension MainViewController: UITextFieldDelegate {
 // MARK: - TableView DataSource/Delegate
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.listCellData.count
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ListTableViewCell.identifier, for: indexPath) as? ListTableViewCell else {
+            return UITableViewCell()
+        }
+        cell.displayData(viewModel.getCellData(at: indexPath.row))
+        return cell
     }
 }
