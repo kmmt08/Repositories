@@ -23,6 +23,7 @@
 		F50A4FDC270D534F0004AF93 /* Web.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F50A4FD2270D534F0004AF93 /* Web.storyboard */; };
 		F50A4FDD270D534F0004AF93 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A4FD3270D534F0004AF93 /* WebViewController.swift */; };
 		F50A4FDE270D534F0004AF93 /* WebViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A4FD4270D534F0004AF93 /* WebViewModel.swift */; };
+		F50A4FE2270D53CB0004AF93 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A4FE1270D53CB0004AF93 /* Loader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		F50A4FD2270D534F0004AF93 /* Web.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Web.storyboard; sourceTree = "<group>"; };
 		F50A4FD3270D534F0004AF93 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		F50A4FD4270D534F0004AF93 /* WebViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewModel.swift; sourceTree = "<group>"; };
+		F50A4FE1270D53CB0004AF93 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 			children = (
 				F50A4FA4270C3A590004AF93 /* Startup */,
 				F50A4FAF270C3F8A0004AF93 /* Service */,
+				F50A4FDF270D53A10004AF93 /* Common */,
 				F50A4FC6270D531B0004AF93 /* Screens */,
 				F50A4F99270C2D5D0004AF93 /* Assets.xcassets */,
 			);
@@ -143,6 +146,22 @@
 				F50A4FD4270D534F0004AF93 /* WebViewModel.swift */,
 			);
 			path = Web;
+			sourceTree = "<group>";
+		};
+		F50A4FDF270D53A10004AF93 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				F50A4FE0270D53B20004AF93 /* Loader */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		F50A4FE0270D53B20004AF93 /* Loader */ = {
+			isa = PBXGroup;
+			children = (
+				F50A4FE1270D53CB0004AF93 /* Loader.swift */,
+			);
+			path = Loader;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,6 +238,7 @@
 			files = (
 				F50A4FD8270D534F0004AF93 /* MainViewModel.swift in Sources */,
 				F50A4FD9270D534F0004AF93 /* ListTableViewCell.swift in Sources */,
+				F50A4FE2270D53CB0004AF93 /* Loader.swift in Sources */,
 				F50A4FB3270C3F8A0004AF93 /* DefaultService.swift in Sources */,
 				F50A4FDD270D534F0004AF93 /* WebViewController.swift in Sources */,
 				F50A4F91270C2D5A0004AF93 /* AppDelegate.swift in Sources */,
