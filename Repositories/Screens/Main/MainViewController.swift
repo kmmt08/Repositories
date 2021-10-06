@@ -20,6 +20,7 @@ class MainViewController: UIViewController {
     
     private func initialSetup() {
         viewModel.delegate = self
+        navigationController?.setToDefault()
         tableView.register(UINib(nibName: String(describing: ListTableViewCell.self), bundle: nil),
                            forCellReuseIdentifier: ListTableViewCell.identifier)
         tableView.register(UINib(nibName: String(describing: ErrorTableViewCell.self), bundle: nil),

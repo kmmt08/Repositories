@@ -26,6 +26,7 @@
 		F50A4FE2270D53CB0004AF93 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A4FE1270D53CB0004AF93 /* Loader.swift */; };
 		F50A4FE6270D590B0004AF93 /* ErrorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A4FE4270D590B0004AF93 /* ErrorTableViewCell.swift */; };
 		F50A4FE7270D590B0004AF93 /* ErrorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F50A4FE5270D590B0004AF93 /* ErrorTableViewCell.xib */; };
+		F50A4FEA270DB0950004AF93 /* UINavigation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A4FE9270DB0940004AF93 /* UINavigation+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		F50A4FE1270D53CB0004AF93 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		F50A4FE4270D590B0004AF93 /* ErrorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorTableViewCell.swift; sourceTree = "<group>"; };
 		F50A4FE5270D590B0004AF93 /* ErrorTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ErrorTableViewCell.xib; sourceTree = "<group>"; };
+		F50A4FE9270DB0940004AF93 /* UINavigation+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigation+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +158,7 @@
 		F50A4FDF270D53A10004AF93 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				F50A4FE8270DB07D0004AF93 /* Extensions */,
 				F50A4FE0270D53B20004AF93 /* Loader */,
 			);
 			path = Common;
@@ -176,6 +179,14 @@
 				F50A4FE5270D590B0004AF93 /* ErrorTableViewCell.xib */,
 			);
 			path = ErrorCell;
+			sourceTree = "<group>";
+		};
+		F50A4FE8270DB07D0004AF93 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F50A4FE9270DB0940004AF93 /* UINavigation+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,6 +269,7 @@
 				F50A4FB3270C3F8A0004AF93 /* DefaultService.swift in Sources */,
 				F50A4FDD270D534F0004AF93 /* WebViewController.swift in Sources */,
 				F50A4F91270C2D5A0004AF93 /* AppDelegate.swift in Sources */,
+				F50A4FEA270DB0950004AF93 /* UINavigation+Extension.swift in Sources */,
 				F50A4FB5270C4EA70004AF93 /* SearchService.swift in Sources */,
 				F50A4FDB270D534F0004AF93 /* MainModel.swift in Sources */,
 				F50A4FDE270D534F0004AF93 /* WebViewModel.swift in Sources */,
