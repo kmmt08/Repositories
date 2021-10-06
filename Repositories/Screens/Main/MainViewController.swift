@@ -32,9 +32,14 @@ class MainViewController: UIViewController {
 // MARK: - MainViewModel Protocol
 
 extension MainViewController: MainViewModelProtocol {
-    func reloadTableView() {
+    func reloadTableView(scrollToTop: Bool) {
         DispatchQueue.main.async {
             self.tableView.reloadData()
+            if scrollToTop {
+                self.tableView.scrollToRow(at: .init(row: 0, section: 0),
+                                           at: .top,
+                                           animated: true)
+            }
         }
     }
     
@@ -72,7 +77,7 @@ extension MainViewController: MainViewModelProtocol {
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch viewModel.getTableCellData() {
+        switch viewModel.tableCellData {
         case .blank:
             return 0
         case .error:
@@ -83,7 +88,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch viewModel.getTableCellData() {
+        switch viewModel.tableCellData {
         case .blank:
             return UITableViewCell()
         case .success(let items):
@@ -102,7 +107,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch viewModel.getTableCellData() {
+        switch viewModel.tableCellData {
         case .blank, .error:
             return tableView.frame.height
         case .success:

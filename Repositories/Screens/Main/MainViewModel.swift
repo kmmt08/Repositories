@@ -6,7 +6,7 @@
 import Foundation
 
 protocol MainViewModelProtocol: AnyObject {
-    func reloadTableView()
+    func reloadTableView(scrollToTop: Bool)
     func showLazyLoader()
     func hideLazyLoader()
     func showFullLoader()
@@ -24,18 +24,8 @@ class MainViewModel {
     private var isLoading: Bool = false
     private var items: [SearchRespositories.Response.Items] = []
     private var listCellData: [MainModel.CellDisplay] = []
-    
-    private var totalItem: Int = 0 {
-        didSet {
-            checkForNextPage()
-        }
-    }
-    
-    private(set) var tableCellData: MainModel.TableData = .blank {
-        didSet {
-            delegate?.reloadTableView()
-        }
-    }
+    private var totalItem: Int = 0
+    private(set) var tableCellData: MainModel.TableData = .blank
     
     init(searchService: SearchServiceProtocol = SearchService(),
          router: MainRouterProtocol) {
@@ -77,12 +67,15 @@ class MainViewModel {
                     strongSelf.listCellData.append(contentsOf: newCellData)
                     strongSelf.tableCellData = .success(item: strongSelf.listCellData)
                     strongSelf.items.append(contentsOf: data.items)
+                    strongSelf.delegate?.reloadTableView(scrollToTop: firstSearch)
                 } else if firstSearch {
                     strongSelf.tableCellData = .error(message: "Search not found. Please try other keyword.")
+                    strongSelf.delegate?.reloadTableView(scrollToTop: firstSearch)
                 }
             case .failure(let error):
                 if firstSearch {
                     strongSelf.tableCellData = .error(message: error.description)
+                    strongSelf.delegate?.reloadTableView(scrollToTop: firstSearch)
                 } else {
                     strongSelf.router.showPopupError(.init(title: "Error",
                                                            message: error.description,
@@ -92,13 +85,9 @@ class MainViewModel {
         }
     }
     
-    func getTableCellData() -> MainModel.TableData {
-        return tableCellData
-    }
-    
     func didScrollAtEnd() {
         if !isLoading,
-           hasNextPage,
+           listCellData.count < totalItem,
            case .success = tableCellData {
             delegate?.showLazyLoader()
             isLoading = true
@@ -112,10 +101,6 @@ class MainViewModel {
             router.navigateToWebview(with: item.htmlUrl,
                                      name: item.name)
         }
-    }
-    
-    private func checkForNextPage() {
-        hasNextPage = listCellData.count < totalItem
     }
     
     private func isFirstSearch() -> Bool {
