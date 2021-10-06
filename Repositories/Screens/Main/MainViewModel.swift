@@ -15,7 +15,7 @@ protocol MainViewModelProtocol: AnyObject {
 
 class MainViewModel {
     private let searchService: SearchServiceProtocol
-    private let router: MainRouterProtocol
+    private let router: MainRouter
     weak var delegate: MainViewModelProtocol?
     
     private var currentSearchText: String = ""
@@ -28,7 +28,7 @@ class MainViewModel {
     private(set) var tableCellData: MainModel.TableData = .blank
     
     init(searchService: SearchServiceProtocol = SearchService(),
-         router: MainRouterProtocol) {
+         router: MainRouter) {
         self.searchService = searchService
         self.router = router
     }

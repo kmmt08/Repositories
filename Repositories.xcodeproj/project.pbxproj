@@ -29,6 +29,8 @@
 		F50A4FEA270DB0950004AF93 /* UINavigation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A4FE9270DB0940004AF93 /* UINavigation+Extension.swift */; };
 		F50A4FEF270DB85E0004AF93 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F50A4FEE270DB85E0004AF93 /* Kingfisher */; };
 		F50A4FF1270DBAEF0004AF93 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A4FF0270DBAEF0004AF93 /* UIView+Extension.swift */; };
+		F50A4FF3270E0A0D0004AF93 /* WebModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A4FF2270E0A0D0004AF93 /* WebModel.swift */; };
+		F50A4FF5270E0A290004AF93 /* WebRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A4FF4270E0A290004AF93 /* WebRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +57,8 @@
 		F50A4FE5270D590B0004AF93 /* ErrorTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ErrorTableViewCell.xib; sourceTree = "<group>"; };
 		F50A4FE9270DB0940004AF93 /* UINavigation+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigation+Extension.swift"; sourceTree = "<group>"; };
 		F50A4FF0270DBAEF0004AF93 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		F50A4FF2270E0A0D0004AF93 /* WebModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebModel.swift; sourceTree = "<group>"; };
+		F50A4FF4270E0A290004AF93 /* WebRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,9 +135,9 @@
 			children = (
 				F50A4FC8270D534F0004AF93 /* MainViewController.swift */,
 				F50A4FC9270D534F0004AF93 /* Main.storyboard */,
-				F50A4FCB270D534F0004AF93 /* MainRouter.swift */,
 				F50A4FCC270D534F0004AF93 /* MainViewModel.swift */,
 				F50A4FD0270D534F0004AF93 /* MainModel.swift */,
+				F50A4FCB270D534F0004AF93 /* MainRouter.swift */,
 				F50A4FCD270D534F0004AF93 /* ListCell */,
 				F50A4FE3270D58E90004AF93 /* ErrorCell */,
 			);
@@ -155,6 +159,8 @@
 				F50A4FD2270D534F0004AF93 /* Web.storyboard */,
 				F50A4FD3270D534F0004AF93 /* WebViewController.swift */,
 				F50A4FD4270D534F0004AF93 /* WebViewModel.swift */,
+				F50A4FF2270E0A0D0004AF93 /* WebModel.swift */,
+				F50A4FF4270E0A290004AF93 /* WebRouter.swift */,
 			);
 			path = Web;
 			sourceTree = "<group>";
@@ -281,6 +287,8 @@
 				F50A4FB3270C3F8A0004AF93 /* DefaultService.swift in Sources */,
 				F50A4FDD270D534F0004AF93 /* WebViewController.swift in Sources */,
 				F50A4F91270C2D5A0004AF93 /* AppDelegate.swift in Sources */,
+				F50A4FF5270E0A290004AF93 /* WebRouter.swift in Sources */,
+				F50A4FF3270E0A0D0004AF93 /* WebModel.swift in Sources */,
 				F50A4FEA270DB0950004AF93 /* UINavigation+Extension.swift in Sources */,
 				F50A4FB5270C4EA70004AF93 /* SearchService.swift in Sources */,
 				F50A4FDB270D534F0004AF93 /* MainModel.swift in Sources */,

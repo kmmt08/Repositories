@@ -5,12 +5,7 @@
 
 import UIKit
 
-protocol MainRouterProtocol {
-    func navigateToWebview(with url: String, name: String)
-    func showPopupError(_ data: MainModel.PopupError)
-}
-
-class MainRouter: MainRouterProtocol {
+class MainRouter {
     private weak var viewController: MainViewController!
     
     init(viewController: MainViewController) {
@@ -22,7 +17,8 @@ class MainRouter: MainRouterProtocol {
                                                     bundle: nil)
         if let webViewController = storyboard.instantiateInitialViewController() as? WebViewController {
             webViewController.viewModel = WebViewModel(name: name,
-                                                       url: url)
+                                                       url: url,
+                                                       router: .init(viewController: webViewController))
             viewController.navigationController?.pushViewController(webViewController, animated: true)
         }
     }
