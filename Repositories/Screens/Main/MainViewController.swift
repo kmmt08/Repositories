@@ -12,7 +12,7 @@ class MainViewController: UIViewController {
     private let searchController: UISearchController = .init()
     
     var viewModel: MainViewModel!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initialSetup()
@@ -22,8 +22,10 @@ class MainViewController: UIViewController {
         viewModel.delegate = self
         tableView.register(UINib(nibName: String(describing: ListTableViewCell.self), bundle: nil),
                            forCellReuseIdentifier: ListTableViewCell.identifier)
+        tableView.register(UINib(nibName: String(describing: ErrorTableViewCell.self), bundle: nil),
+                           forCellReuseIdentifier: ErrorTableViewCell.identifier)
     }
-
+    
 }
 
 // MARK: - MainViewModel Protocol
@@ -67,15 +69,33 @@ extension MainViewController: MainViewModelProtocol {
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.listCellData.count
+        switch viewModel.getTableCellData() {
+        case .blank:
+            return 0
+        case .error:
+            return 1
+        case .success(let items):
+            return items.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: ListTableViewCell.identifier, for: indexPath) as? ListTableViewCell else {
+        switch viewModel.getTableCellData() {
+        case .blank:
             return UITableViewCell()
+        case .success(let items):
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: ListTableViewCell.identifier, for: indexPath) as? ListTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.displayData(items[indexPath.row])
+            return cell
+        case .error(let message):
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: ErrorTableViewCell.identifier, for: indexPath) as? ErrorTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.setErrorMessage(message)
+            return cell
         }
-        cell.displayData(viewModel.getCellData(at: indexPath.row))
-        return cell
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

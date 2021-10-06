@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="errorCell" rowHeight="363" id="KGk-i7-Jjw" customClass="ErrorTableViewCell" customModule="Repositories" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="508" height="363"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="508" height="363"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ERROR" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MRS-J7-DOO">
+                        <rect key="frame" x="36" y="212.5" width="436" height="20.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="error" translatesAutoresizingMaskIntoConstraints="NO" id="pdy-ku-aQF">
+                        <rect key="frame" x="178" y="40" width="152" height="152.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="pdy-ku-aQF" secondAttribute="height" multiplier="1:1" id="L4K-jI-uP6"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="MRS-J7-DOO" secondAttribute="bottom" constant="40" id="7JB-Mf-ScL"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="MRS-J7-DOO" secondAttribute="trailing" constant="16" id="LQR-pr-qjZ"/>
+                    <constraint firstItem="pdy-ku-aQF" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="OYN-5H-E6A"/>
+                    <constraint firstItem="MRS-J7-DOO" firstAttribute="top" secondItem="pdy-ku-aQF" secondAttribute="bottom" constant="20" id="VxY-dY-hs4"/>
+                    <constraint firstItem="MRS-J7-DOO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="16" id="nOh-I4-Lkc"/>
+                    <constraint firstItem="pdy-ku-aQF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="40" id="pJ2-nw-Wbk"/>
+                    <constraint firstItem="pdy-ku-aQF" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.3" id="tje-23-ZHC"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="errorLabel" destination="MRS-J7-DOO" id="BlH-mK-FuH"/>
+            </connections>
+            <point key="canvasLocation" x="272.46376811594206" y="184.48660714285714"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="error" width="50" height="50"/>
+    </resources>
+</document>

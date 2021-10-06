@@ -23,6 +23,7 @@ class MainViewModel {
     private var hasNextPage: Bool = false
     private var isLoading: Bool = false
     private var items: [SearchRespositories.Response.Items] = []
+    private var listCellData: [MainModel.CellDisplay] = []
     
     private var totalItem: Int = 0 {
         didSet {
@@ -30,7 +31,7 @@ class MainViewModel {
         }
     }
     
-    private(set) var listCellData: [MainModel.CellDisplay] = [] {
+    private(set) var tableCellData: MainModel.TableData = .blank {
         didSet {
             delegate?.reloadTableView()
         }
@@ -49,42 +50,59 @@ class MainViewModel {
             items = []
             listCellData = []
         }
-        if isFirstSearch() {
+        let firstSearch: Bool = isFirstSearch()
+        if firstSearch {
             delegate?.showFullLoader()
         }
         currentSearchText = text
         searchService.getSearchRepositories(text, page: nextPage) { [weak self] result in
-            if self?.isFirstSearch() == true {
-                self?.delegate?.hideFullLoader()
+            guard let strongSelf = self else { return }
+            if firstSearch {
+                strongSelf.delegate?.hideFullLoader()
             } else {
-                self?.delegate?.hideLazyLoader()
-                self?.isLoading = false
+                strongSelf.delegate?.hideLazyLoader()
+                strongSelf.isLoading = false
             }
             switch result {
             case .success(let data):
-                self?.nextPage += 1
-                self?.totalItem = data.totalCount
-                var newCellData: [MainModel.CellDisplay] = []
-                for item in data.items {
-                    newCellData.append(.init(name: item.fullName,
-                                             description: item.description))
+                if data.items.count > 0 {
+                    strongSelf.nextPage += 1
+                    strongSelf.totalItem = data.totalCount
+                    var newCellData: [MainModel.CellDisplay] = []
+                    for item in data.items {
+                        newCellData.append(.init(name: item.fullName,
+                                                 description: item.description))
+                    }
+                    strongSelf.listCellData.append(contentsOf: newCellData)
+                    strongSelf.tableCellData = .success(item: strongSelf.listCellData)
+                    strongSelf.items.append(contentsOf: data.items)
+                } else if firstSearch {
+                    strongSelf.tableCellData = .error(message: "Search not found. Please try another keyword.")
                 }
-                self?.listCellData.append(contentsOf: newCellData)
-                self?.items.append(contentsOf: data.items)
             case .failure(let error):
+                if firstSearch {
+                    strongSelf.tableCellData = .error(message: "Something went wrong. Please try again")
+                } else {
+                    
+                }
                 print(error)
             }
         }
     }
     
-    func getCellData(at row: Int) -> MainModel.CellDisplay {
-        return listCellData[row]
+    func getTableCellData() -> MainModel.TableData {
+        return tableCellData
     }
+    
+//    func getCellData(at row: Int) -> MainModel.CellDisplay {
+//        return listCellData[row]
+//    }
     
     func willDisplayCell(at row: Int) {
         if row == listCellData.count - 1,
            !isLoading,
-           hasNextPage {
+           hasNextPage,
+           case .success = tableCellData {
             delegate?.showLazyLoader()
             isLoading = true
             search(currentSearchText, forNextPage: true)
@@ -92,9 +110,11 @@ class MainViewModel {
     }
     
     func didSelectCell(at row: Int) {
-        let item = items[row]
-        router.navigateToWebview(with: item.htmlUrl,
-                                 name: item.name)
+        if case .success = tableCellData {
+            let item = items[row]
+            router.navigateToWebview(with: item.htmlUrl,
+                                     name: item.name)
+        }
     }
     
     private func checkForNextPage() {

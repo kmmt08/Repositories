@@ -24,6 +24,8 @@
 		F50A4FDD270D534F0004AF93 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A4FD3270D534F0004AF93 /* WebViewController.swift */; };
 		F50A4FDE270D534F0004AF93 /* WebViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A4FD4270D534F0004AF93 /* WebViewModel.swift */; };
 		F50A4FE2270D53CB0004AF93 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A4FE1270D53CB0004AF93 /* Loader.swift */; };
+		F50A4FE6270D590B0004AF93 /* ErrorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A4FE4270D590B0004AF93 /* ErrorTableViewCell.swift */; };
+		F50A4FE7270D590B0004AF93 /* ErrorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F50A4FE5270D590B0004AF93 /* ErrorTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,8 @@
 		F50A4FD3270D534F0004AF93 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		F50A4FD4270D534F0004AF93 /* WebViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewModel.swift; sourceTree = "<group>"; };
 		F50A4FE1270D53CB0004AF93 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
+		F50A4FE4270D590B0004AF93 /* ErrorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorTableViewCell.swift; sourceTree = "<group>"; };
+		F50A4FE5270D590B0004AF93 /* ErrorTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ErrorTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,8 +127,9 @@
 				F50A4FC9270D534F0004AF93 /* Main.storyboard */,
 				F50A4FCB270D534F0004AF93 /* MainRouter.swift */,
 				F50A4FCC270D534F0004AF93 /* MainViewModel.swift */,
-				F50A4FCD270D534F0004AF93 /* ListCell */,
 				F50A4FD0270D534F0004AF93 /* MainModel.swift */,
+				F50A4FCD270D534F0004AF93 /* ListCell */,
+				F50A4FE3270D58E90004AF93 /* ErrorCell */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -162,6 +167,15 @@
 				F50A4FE1270D53CB0004AF93 /* Loader.swift */,
 			);
 			path = Loader;
+			sourceTree = "<group>";
+		};
+		F50A4FE3270D58E90004AF93 /* ErrorCell */ = {
+			isa = PBXGroup;
+			children = (
+				F50A4FE4270D590B0004AF93 /* ErrorTableViewCell.swift */,
+				F50A4FE5270D590B0004AF93 /* ErrorTableViewCell.xib */,
+			);
+			path = ErrorCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,6 +235,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F50A4FE7270D590B0004AF93 /* ErrorTableViewCell.xib in Resources */,
 				F50A4FD6270D534F0004AF93 /* Main.storyboard in Resources */,
 				F50A4FDA270D534F0004AF93 /* ListTableViewCell.xib in Resources */,
 				F50A4FDC270D534F0004AF93 /* Web.storyboard in Resources */,
@@ -238,6 +253,7 @@
 			files = (
 				F50A4FD8270D534F0004AF93 /* MainViewModel.swift in Sources */,
 				F50A4FD9270D534F0004AF93 /* ListTableViewCell.swift in Sources */,
+				F50A4FE6270D590B0004AF93 /* ErrorTableViewCell.swift in Sources */,
 				F50A4FE2270D53CB0004AF93 /* Loader.swift in Sources */,
 				F50A4FB3270C3F8A0004AF93 /* DefaultService.swift in Sources */,
 				F50A4FDD270D534F0004AF93 /* WebViewController.swift in Sources */,
