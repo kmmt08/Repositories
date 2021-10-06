@@ -28,10 +28,12 @@ class MainRouter: MainRouterProtocol {
     }
     
     func showPopupError(_ data: MainModel.PopupError) {
-        let alert: UIAlertController = .init(title: data.title,
-                                             message: data.message,
-                                             preferredStyle: .alert)
-        alert.addAction(.init(title: data.buttonTitle, style: .default))
-        viewController.present(alert, animated: true)
+        DispatchQueue.main.async {
+            let alert: UIAlertController = .init(title: data.title,
+                                                 message: data.message,
+                                                 preferredStyle: .alert)
+            alert.addAction(.init(title: data.buttonTitle, style: .default))
+            self.viewController.present(alert, animated: true)
+        }
     }
 }

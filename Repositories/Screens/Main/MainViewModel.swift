@@ -78,14 +78,14 @@ class MainViewModel {
                     strongSelf.tableCellData = .success(item: strongSelf.listCellData)
                     strongSelf.items.append(contentsOf: data.items)
                 } else if firstSearch {
-                    strongSelf.tableCellData = .error(message: "Search not found. Please try another keyword.")
+                    strongSelf.tableCellData = .error(message: "Search not found. Please try other keyword.")
                 }
-            case .failure:
+            case .failure(let error):
                 if firstSearch {
-                    strongSelf.tableCellData = .error(message: "Something went wrong. Please try again.")
+                    strongSelf.tableCellData = .error(message: error.description)
                 } else {
                     strongSelf.router.showPopupError(.init(title: "Error",
-                                                           message: "Unable to fetch data. Please try again later.",
+                                                           message: error.description,
                                                            buttonTitle: "Ok"))
                 }
             }
@@ -96,9 +96,8 @@ class MainViewModel {
         return tableCellData
     }
     
-    func willDisplayCell(at row: Int) {
-        if row == listCellData.count - 1,
-           !isLoading,
+    func didScrollAtEnd() {
+        if !isLoading,
            hasNextPage,
            case .success = tableCellData {
             delegate?.showLazyLoader()
@@ -116,9 +115,7 @@ class MainViewModel {
     }
     
     private func checkForNextPage() {
-        let pages = Double(totalItem) / 30
-        let maxPages = pages.rounded(.up)
-        hasNextPage = Double(nextPage) <= maxPages
+        hasNextPage = listCellData.count < totalItem
     }
     
     private func isFirstSearch() -> Bool {

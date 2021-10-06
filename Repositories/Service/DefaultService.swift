@@ -46,17 +46,22 @@ class DefaultService {
                 return
             }
             
-            guard let response = urlResponse as? HTTPURLResponse,
-                  (200...299).contains(response.statusCode) else {
-                let urlResponse: HTTPURLResponse? = urlResponse as? HTTPURLResponse
-                completion(Result.failure(ErrorResponse(code: urlResponse?.statusCode,
-                                                        description: urlResponse?.description ?? "Server Error")))
-                return
-            }
-            
             guard let responseData = data else {
                 completion(Result.failure(ErrorResponse(code: nil,
                                                         description: error?.localizedDescription ?? "No Data Error")))
+                return
+            }
+            
+            guard let response = urlResponse as? HTTPURLResponse,
+                  (200...299).contains(response.statusCode) else {
+                let urlResponse: HTTPURLResponse? = urlResponse as? HTTPURLResponse
+                var errorMessage: String = urlResponse?.description ?? "Server Error"
+                if let decoded = try? JSONSerialization.jsonObject(with: responseData, options: []) as? [String: String],
+                   let message = decoded["message"] {
+                    errorMessage = message
+                }
+                completion(Result.failure(ErrorResponse(code: urlResponse?.statusCode,
+                                                        description: errorMessage)))
                 return
             }
             

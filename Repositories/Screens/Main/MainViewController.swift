@@ -39,13 +39,15 @@ extension MainViewController: MainViewModelProtocol {
     }
     
     func showLazyLoader() {
-        let spinner = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
-        spinner.frame = .init(x: 0,
-                              y: 0,
-                              width: tableView.bounds.width,
-                              height: 44)
-        spinner.startAnimating()
-        tableView.tableFooterView = spinner
+        DispatchQueue.main.async {
+            let spinner = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
+            spinner.frame = .init(x: 0,
+                                  y: 0,
+                                  width: self.tableView.bounds.width,
+                                  height: 44)
+            spinner.startAnimating()
+            self.tableView.tableFooterView = spinner
+        }
     }
     
     func hideLazyLoader() {
@@ -108,9 +110,14 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        viewModel.willDisplayCell(at: indexPath.row)
-    }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let currentOffset = scrollView.contentOffset.y
+        let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
+        if maximumOffset - currentOffset <= 0,
+           presentedViewController as? UIAlertController == nil {
+            viewModel.didScrollAtEnd()
+        }
+   }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         dismissKeyboard()
