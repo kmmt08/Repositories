@@ -22,6 +22,12 @@ class MainViewModel {
     private var isLoading: Bool = false
     private var items: [SearchRespositories.Response.Items] = []
     
+    private var totalItem: Int = 0 {
+        didSet {
+            checkForNextPage()
+        }
+    }
+    
     private(set) var listCellData: [MainModel.CellDisplay] = [] {
         didSet {
             delegate?.reloadTableView()
@@ -37,6 +43,7 @@ class MainViewModel {
     func search(_ text: String) {
         if text != currentSearchText {
             nextPage = 1
+            totalItem = 0
             items = []
             listCellData = []
         }
@@ -47,7 +54,7 @@ class MainViewModel {
             switch result {
             case .success(let data):
                 self?.nextPage += 1
-                self?.hasNextPage = data.incompleteResults
+                self?.totalItem = data.totalCount
                 var newCellData: [MainModel.CellDisplay] = []
                 for item in data.items {
                     newCellData.append(.init(name: item.fullName,
@@ -79,5 +86,11 @@ class MainViewModel {
         let item = items[row]
         router.navigateToWebview(with: item.htmlUrl,
                                  name: item.name)
+    }
+    
+    private func checkForNextPage() {
+        let pages = Double(totalItem) / 30
+        let maxPages = pages.rounded(.up)
+        hasNextPage = Double(nextPage) <= maxPages
     }
 }
