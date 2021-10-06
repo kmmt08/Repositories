@@ -20,11 +20,20 @@ struct SearchRespositories {
             let fullName: String
             let description: String?
             let htmlUrl: String
+            let owner: Owner
             
             private enum CodingKeys: String, CodingKey {
                 case fullName = "full_name"
                 case htmlUrl = "html_url"
-                case name, description
+                case name, description, owner
+            }
+        }
+        
+        struct Owner: Decodable {
+            let avatarUrl: String
+            
+            private enum CodingKeys: String, CodingKey {
+                case avatarUrl = "avatar_url"
             }
         }
     }

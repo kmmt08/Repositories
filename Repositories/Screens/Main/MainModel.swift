@@ -8,6 +8,7 @@ import UIKit
 
 struct MainModel {
     struct CellDisplay {
+        let ownerAvatarUrl: String
         let name: String
         let description: String?
     }

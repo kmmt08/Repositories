@@ -70,7 +70,8 @@ class MainViewModel {
                     strongSelf.totalItem = data.totalCount
                     var newCellData: [MainModel.CellDisplay] = []
                     for item in data.items {
-                        newCellData.append(.init(name: item.fullName,
+                        newCellData.append(.init(ownerAvatarUrl: item.owner.avatarUrl,
+                                                 name: item.fullName,
                                                  description: item.description))
                     }
                     strongSelf.listCellData.append(contentsOf: newCellData)

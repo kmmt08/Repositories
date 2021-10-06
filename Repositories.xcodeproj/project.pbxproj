@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -27,6 +27,8 @@
 		F50A4FE6270D590B0004AF93 /* ErrorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A4FE4270D590B0004AF93 /* ErrorTableViewCell.swift */; };
 		F50A4FE7270D590B0004AF93 /* ErrorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F50A4FE5270D590B0004AF93 /* ErrorTableViewCell.xib */; };
 		F50A4FEA270DB0950004AF93 /* UINavigation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A4FE9270DB0940004AF93 /* UINavigation+Extension.swift */; };
+		F50A4FEF270DB85E0004AF93 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = F50A4FEE270DB85E0004AF93 /* Kingfisher */; };
+		F50A4FF1270DBAEF0004AF93 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A4FF0270DBAEF0004AF93 /* UIView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,7 @@
 		F50A4FE4270D590B0004AF93 /* ErrorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorTableViewCell.swift; sourceTree = "<group>"; };
 		F50A4FE5270D590B0004AF93 /* ErrorTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ErrorTableViewCell.xib; sourceTree = "<group>"; };
 		F50A4FE9270DB0940004AF93 /* UINavigation+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigation+Extension.swift"; sourceTree = "<group>"; };
+		F50A4FF0270DBAEF0004AF93 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F50A4FEF270DB85E0004AF93 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				F50A4FE9270DB0940004AF93 /* UINavigation+Extension.swift */,
+				F50A4FF0270DBAEF0004AF93 /* UIView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -205,6 +210,9 @@
 			dependencies = (
 			);
 			name = Repositories;
+			packageProductDependencies = (
+				F50A4FEE270DB85E0004AF93 /* Kingfisher */,
+			);
 			productName = Repositories;
 			productReference = F50A4F8D270C2D5A0004AF93 /* Repositories.app */;
 			productType = "com.apple.product-type.application";
@@ -232,6 +240,9 @@
 				Base,
 			);
 			mainGroup = F50A4F84270C2D5A0004AF93;
+			packageReferences = (
+				F50A4FED270DB85E0004AF93 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = F50A4F8E270C2D5A0004AF93 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -265,6 +276,7 @@
 				F50A4FD8270D534F0004AF93 /* MainViewModel.swift in Sources */,
 				F50A4FD9270D534F0004AF93 /* ListTableViewCell.swift in Sources */,
 				F50A4FE6270D590B0004AF93 /* ErrorTableViewCell.swift in Sources */,
+				F50A4FF1270DBAEF0004AF93 /* UIView+Extension.swift in Sources */,
 				F50A4FE2270D53CB0004AF93 /* Loader.swift in Sources */,
 				F50A4FB3270C3F8A0004AF93 /* DefaultService.swift in Sources */,
 				F50A4FDD270D534F0004AF93 /* WebViewController.swift in Sources */,
@@ -481,6 +493,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F50A4FED270DB85E0004AF93 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F50A4FEE270DB85E0004AF93 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F50A4FED270DB85E0004AF93 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F50A4F85270C2D5A0004AF93 /* Project object */;
 }
