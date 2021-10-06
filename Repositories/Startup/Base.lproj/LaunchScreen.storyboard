@@ -15,25 +15,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="github_launch" translatesAutoresizingMaskIntoConstraints="NO" id="SMo-Up-zG7">
-                                <rect key="frame" x="0.0" y="223" width="414" height="450"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch" translatesAutoresizingMaskIntoConstraints="NO" id="SMo-Up-zG7">
+                                <rect key="frame" x="30" y="74" width="354" height="758"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="1" green="0.97308529087371476" blue="0.88719255994644652" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="SMo-Up-zG7" secondAttribute="trailing" id="4qj-hb-VN7"/>
-                            <constraint firstItem="SMo-Up-zG7" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="9gt-U6-z9H"/>
-                            <constraint firstItem="SMo-Up-zG7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="wCx-JN-H0G"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="SMo-Up-zG7" secondAttribute="trailing" constant="30" id="4qj-hb-VN7"/>
+                            <constraint firstItem="SMo-Up-zG7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="frz-Ha-4zr"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="SMo-Up-zG7" secondAttribute="bottom" constant="30" id="k6m-rG-aWg"/>
+                            <constraint firstItem="SMo-Up-zG7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="wCx-JN-H0G"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="725" y="372"/>
+            <point key="canvasLocation" x="724.63768115942037" y="371.65178571428572"/>
         </scene>
     </scenes>
     <resources>
-        <image name="github_launch" width="800" height="450"/>
+        <image name="launch" width="252.5" height="204.5"/>
     </resources>
 </document>
