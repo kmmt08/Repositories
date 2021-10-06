@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,8 +16,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OuH-7o-EJA">
-                                <rect key="frame" x="0.0" y="103" width="414" height="743"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <rect key="frame" x="0.0" y="95" width="414" height="767"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="OfT-0n-qdP"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="SfD-LE-dTK"/>
@@ -37,11 +36,11 @@
                             </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.97647058823529409" green="0.98039215686274506" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OuH-7o-EJA" secondAttribute="trailing" id="3ni-5m-EJd"/>
-                            <constraint firstItem="OuH-7o-EJA" firstAttribute="top" secondItem="IUM-gE-JP4" secondAttribute="bottom" constant="8" id="NTJ-tz-I4m"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="OuH-7o-EJA" secondAttribute="bottom" constant="16" id="SIS-qh-g1J"/>
+                            <constraint firstItem="OuH-7o-EJA" firstAttribute="top" secondItem="IUM-gE-JP4" secondAttribute="bottom" id="NTJ-tz-I4m"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="OuH-7o-EJA" secondAttribute="bottom" id="SIS-qh-g1J"/>
                             <constraint firstItem="IUM-gE-JP4" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="X9t-BJ-oT8"/>
                             <constraint firstItem="OuH-7o-EJA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="XQQ-zZ-adY"/>
                             <constraint firstItem="IUM-gE-JP4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="rbf-gb-IR1"/>
@@ -58,9 +57,4 @@
             <point key="canvasLocation" x="73.913043478260875" y="112.5"/>
         </scene>
     </scenes>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>

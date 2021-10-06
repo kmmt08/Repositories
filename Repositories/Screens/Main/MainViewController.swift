@@ -99,6 +99,15 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch viewModel.getTableCellData() {
+        case .blank, .error:
+            return tableView.frame.height
+        case .success:
+            return UITableView.automaticDimension
+        }
+    }
+    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         viewModel.willDisplayCell(at: indexPath.row)
     }
