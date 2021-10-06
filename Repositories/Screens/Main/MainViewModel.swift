@@ -82,7 +82,7 @@ class MainViewModel {
                 }
             case .failure(let error):
                 if firstSearch {
-                    strongSelf.tableCellData = .error(message: "Something went wrong. Please try again")
+                    strongSelf.tableCellData = .error(message: "Something went wrong. Please try again.")
                 } else {
                     
                 }
@@ -94,10 +94,6 @@ class MainViewModel {
     func getTableCellData() -> MainModel.TableData {
         return tableCellData
     }
-    
-//    func getCellData(at row: Int) -> MainModel.CellDisplay {
-//        return listCellData[row]
-//    }
     
     func willDisplayCell(at row: Int) {
         if row == listCellData.count - 1,
