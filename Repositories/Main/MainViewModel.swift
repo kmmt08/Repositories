@@ -40,8 +40,8 @@ class MainViewModel {
         self.router = router
     }
     
-    func search(_ text: String) {
-        if text != currentSearchText {
+    func search(_ text: String, forNextPage: Bool = false) {
+        if text != currentSearchText || (!forNextPage && text == currentSearchText) {
             nextPage = 1
             totalItem = 0
             items = []
@@ -78,7 +78,7 @@ class MainViewModel {
            hasNextPage {
             delegate?.showLazyLoader()
             isLoading = true
-            search(currentSearchText)
+            search(currentSearchText, forNextPage: true)
         }
     }
     
