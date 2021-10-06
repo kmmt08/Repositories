@@ -38,7 +38,7 @@ extension MainViewController: MainViewModelProtocol {
             if scrollToTop {
                 self.tableView.scrollToRow(at: .init(row: 0, section: 0),
                                            at: .top,
-                                           animated: true)
+                                           animated: false)
             }
         }
     }

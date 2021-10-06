@@ -21,10 +21,12 @@ struct SearchRespositories {
             let description: String?
             let htmlUrl: String
             let owner: Owner
+            let starGazersCount: Int
             
             private enum CodingKeys: String, CodingKey {
                 case fullName = "full_name"
                 case htmlUrl = "html_url"
+                case starGazersCount = "stargazers_count"
                 case name, description, owner
             }
         }

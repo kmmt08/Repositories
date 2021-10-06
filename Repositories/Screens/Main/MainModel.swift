@@ -11,6 +11,7 @@ struct MainModel {
         let ownerAvatarUrl: String
         let name: String
         let description: String?
+        let starCount: String
     }
     
     struct PopupError {

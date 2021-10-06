@@ -23,9 +23,7 @@ class WebRouter {
                                              message: data.message,
                                              preferredStyle: .alert)
         let cancelAction: UIAlertAction = .init(title: data.cancelButtonTitle,
-                                                style: .cancel) { [weak self] _ in
-            self?.viewController.navigationController?.popViewController(animated: true)
-        }
+                                                style: .cancel)
         let okAction: UIAlertAction = .init(title: data.okButtonTitle,
                                             style: .default) { [weak self] _ in
             self?.delegate?.alertOkButtonTapped()

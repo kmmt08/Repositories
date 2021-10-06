@@ -62,7 +62,8 @@ class MainViewModel {
                     for item in data.items {
                         newCellData.append(.init(ownerAvatarUrl: item.owner.avatarUrl,
                                                  name: item.fullName,
-                                                 description: item.description))
+                                                 description: item.description,
+                                                 starCount: strongSelf.formatCount(item.starGazersCount)))
                     }
                     strongSelf.listCellData.append(contentsOf: newCellData)
                     strongSelf.tableCellData = .success(item: strongSelf.listCellData)
@@ -105,5 +106,11 @@ class MainViewModel {
     
     private func isFirstSearch() -> Bool {
         return nextPage == 1
+    }
+    
+    private func formatCount(_ count: Int) -> String {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        return numberFormatter.string(from: NSNumber(value: count)) ?? "\(count)"
     }
 }

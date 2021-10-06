@@ -34,23 +34,42 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gbl-bb-cYe">
-                                <rect key="frame" x="16" y="84" width="535" height="66"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="16" y="84" width="535" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="q5e-cd-8DZ">
+                                <rect key="frame" x="16" y="125" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="q5e-cd-8DZ" secondAttribute="height" multiplier="1:1" id="9yr-kg-y70"/>
+                                    <constraint firstAttribute="width" constant="25" id="GfC-Sj-ZT0"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Kd-0x-O1s">
+                                <rect key="frame" x="43" y="125" width="508" height="25"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="QoP-Ba-QYZ" secondAttribute="trailing" constant="16" id="4sS-bN-GHM"/>
-                            <constraint firstAttribute="bottom" secondItem="Gbl-bb-cYe" secondAttribute="bottom" constant="16" id="BqN-wl-Dyt"/>
+                            <constraint firstItem="q5e-cd-8DZ" firstAttribute="top" secondItem="Gbl-bb-cYe" secondAttribute="bottom" constant="8" id="C5U-ce-neQ"/>
                             <constraint firstItem="QoP-Ba-QYZ" firstAttribute="leading" secondItem="bwI-L0-5Sx" secondAttribute="trailing" constant="8" id="CRl-fp-XQA"/>
                             <constraint firstAttribute="trailing" secondItem="Gbl-bb-cYe" secondAttribute="trailing" constant="16" id="E2c-Ml-SeO"/>
                             <constraint firstItem="bwI-L0-5Sx" firstAttribute="top" secondItem="iQg-3r-bYk" secondAttribute="top" constant="16" id="Fag-WS-WNI"/>
                             <constraint firstItem="bwI-L0-5Sx" firstAttribute="leading" secondItem="iQg-3r-bYk" secondAttribute="leading" constant="16" id="Ptc-8B-udI"/>
                             <constraint firstItem="QoP-Ba-QYZ" firstAttribute="bottom" secondItem="bwI-L0-5Sx" secondAttribute="bottom" id="Wqh-DF-pzx"/>
                             <constraint firstItem="Gbl-bb-cYe" firstAttribute="top" secondItem="bwI-L0-5Sx" secondAttribute="bottom" constant="8" id="XNW-Vl-6z6"/>
+                            <constraint firstItem="6Kd-0x-O1s" firstAttribute="leading" secondItem="q5e-cd-8DZ" secondAttribute="trailing" constant="2" id="gMc-6K-HMy"/>
+                            <constraint firstItem="6Kd-0x-O1s" firstAttribute="top" secondItem="q5e-cd-8DZ" secondAttribute="top" id="hwX-nr-DmZ"/>
+                            <constraint firstItem="q5e-cd-8DZ" firstAttribute="leading" secondItem="iQg-3r-bYk" secondAttribute="leading" constant="16" id="ije-pF-MG4"/>
                             <constraint firstItem="Gbl-bb-cYe" firstAttribute="leading" secondItem="iQg-3r-bYk" secondAttribute="leading" constant="16" id="mTj-BC-3gF"/>
+                            <constraint firstAttribute="trailing" secondItem="6Kd-0x-O1s" secondAttribute="trailing" constant="16" id="pGz-Sd-Gx8"/>
+                            <constraint firstItem="6Kd-0x-O1s" firstAttribute="bottom" secondItem="q5e-cd-8DZ" secondAttribute="bottom" id="sPX-S8-eYc"/>
+                            <constraint firstAttribute="bottom" secondItem="6Kd-0x-O1s" secondAttribute="bottom" constant="16" id="sq2-ko-Qey"/>
                             <constraint firstItem="QoP-Ba-QYZ" firstAttribute="top" secondItem="iQg-3r-bYk" secondAttribute="top" constant="16" id="vXz-n3-qas"/>
                         </constraints>
                     </view>
@@ -67,6 +86,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="containerView" destination="iQg-3r-bYk" id="8ea-o2-nse"/>
+                <outlet property="countLabel" destination="6Kd-0x-O1s" id="U6f-b6-yUi"/>
                 <outlet property="descriptionLabel" destination="Gbl-bb-cYe" id="pA5-mF-82l"/>
                 <outlet property="iconView" destination="bwI-L0-5Sx" id="W7v-Nd-TRO"/>
                 <outlet property="titleLabel" destination="QoP-Ba-QYZ" id="XCs-Is-uEk"/>
@@ -75,6 +95,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="star" width="32" height="32"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

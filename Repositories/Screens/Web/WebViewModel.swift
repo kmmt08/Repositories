@@ -40,8 +40,8 @@ class WebViewModel {
     func loadWebviewFailed() {
         router.showPopupError(.init(title: "Error",
                                     message: "Failed to load the URL. Do you want to try loading again?",
-                                    cancelButtonTitle: "Go Back",
-                                    okButtonTitle: "Ok"))
+                                    cancelButtonTitle: "No",
+                                    okButtonTitle: "Yes"))
     }
 }
 

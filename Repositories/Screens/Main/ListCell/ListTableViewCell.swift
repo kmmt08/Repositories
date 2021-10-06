@@ -11,6 +11,7 @@ class ListTableViewCell: UITableViewCell {
     @IBOutlet private weak var iconView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
+    @IBOutlet private weak var countLabel: UILabel!
     
     static let identifier: String = "listCell"
     
@@ -26,6 +27,7 @@ class ListTableViewCell: UITableViewCell {
                              placeholder: UIImage(named: "default_icon"))
         titleLabel.text = data.name
         descriptionLabel.text = data.description
+        countLabel.text = data.starCount
     }
     
 }
