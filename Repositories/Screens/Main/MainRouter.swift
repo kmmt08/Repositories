@@ -7,6 +7,7 @@ import UIKit
 
 protocol MainRouterProtocol {
     func navigateToWebview(with url: String, name: String)
+    func showPopupError(_ data: MainModel.PopupError)
 }
 
 class MainRouter: MainRouterProtocol {
@@ -24,5 +25,13 @@ class MainRouter: MainRouterProtocol {
                                                        url: url)
             viewController.navigationController?.pushViewController(webViewController, animated: true)
         }
+    }
+    
+    func showPopupError(_ data: MainModel.PopupError) {
+        let alert: UIAlertController = .init(title: data.title,
+                                             message: data.message,
+                                             preferredStyle: .alert)
+        alert.addAction(.init(title: data.buttonTitle, style: .default))
+        viewController.present(alert, animated: true)
     }
 }

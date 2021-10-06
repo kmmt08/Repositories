@@ -13,6 +13,12 @@ struct MainModel {
         let description: String?
     }
     
+    struct PopupError {
+        let title: String
+        let message: String
+        let buttonTitle: String
+    }
+    
     enum TableData {
         case success(item: [CellDisplay])
         case error(message: String)

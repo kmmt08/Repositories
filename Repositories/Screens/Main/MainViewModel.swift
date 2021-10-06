@@ -80,13 +80,14 @@ class MainViewModel {
                 } else if firstSearch {
                     strongSelf.tableCellData = .error(message: "Search not found. Please try another keyword.")
                 }
-            case .failure(let error):
+            case .failure:
                 if firstSearch {
                     strongSelf.tableCellData = .error(message: "Something went wrong. Please try again.")
                 } else {
-                    
+                    strongSelf.router.showPopupError(.init(title: "Error",
+                                                           message: "Unable to fetch data. Please try again later.",
+                                                           buttonTitle: "Ok"))
                 }
-                print(error)
             }
         }
     }
