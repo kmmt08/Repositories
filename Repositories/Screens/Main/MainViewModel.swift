@@ -9,6 +9,8 @@ protocol MainViewModelProtocol: AnyObject {
     func reloadTableView()
     func showLazyLoader()
     func hideLazyLoader()
+    func showFullLoader()
+    func hideFullLoader()
 }
 
 class MainViewModel {
@@ -47,10 +49,17 @@ class MainViewModel {
             items = []
             listCellData = []
         }
+        if isFirstSearch() {
+            delegate?.showFullLoader()
+        }
         currentSearchText = text
         searchService.getSearchRepositories(text, page: nextPage) { [weak self] result in
-            self?.delegate?.hideLazyLoader()
-            self?.isLoading = false
+            if self?.isFirstSearch() == true {
+                self?.delegate?.hideFullLoader()
+            } else {
+                self?.delegate?.hideLazyLoader()
+                self?.isLoading = false
+            }
             switch result {
             case .success(let data):
                 self?.nextPage += 1
@@ -92,5 +101,9 @@ class MainViewModel {
         let pages = Double(totalItem) / 30
         let maxPages = pages.rounded(.up)
         hasNextPage = Double(nextPage) <= maxPages
+    }
+    
+    private func isFirstSearch() -> Bool {
+        return nextPage == 1
     }
 }

@@ -53,6 +53,14 @@ extension MainViewController: MainViewModelProtocol {
             self?.tableView.tableFooterView = nil
         }
     }
+    
+    func showFullLoader() {
+        Loader.shared.show()
+    }
+    
+    func hideFullLoader() {
+        Loader.shared.hide()
+    }
 }
 
 // MARK: - TableView DataSource/Delegate
