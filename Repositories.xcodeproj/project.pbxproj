@@ -19,6 +19,10 @@
 		F50A4FB7270C50030004AF93 /* ServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A4FB6270C50030004AF93 /* ServiceModel.swift */; };
 		F50A4FBB270C77420004AF93 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A4FB9270C77420004AF93 /* ListTableViewCell.swift */; };
 		F50A4FBC270C77420004AF93 /* ListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F50A4FBA270C77420004AF93 /* ListTableViewCell.xib */; };
+		F50A4FBE270CBABA0004AF93 /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A4FBD270CBABA0004AF93 /* MainRouter.swift */; };
+		F50A4FC1270CBD110004AF93 /* Web.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F50A4FC0270CBD110004AF93 /* Web.storyboard */; };
+		F50A4FC3270CBD260004AF93 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A4FC2270CBD260004AF93 /* WebViewController.swift */; };
+		F50A4FC5270CBD330004AF93 /* WebViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50A4FC4270CBD330004AF93 /* WebViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +40,10 @@
 		F50A4FB6270C50030004AF93 /* ServiceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceModel.swift; sourceTree = "<group>"; };
 		F50A4FB9270C77420004AF93 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
 		F50A4FBA270C77420004AF93 /* ListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListTableViewCell.xib; sourceTree = "<group>"; };
+		F50A4FBD270CBABA0004AF93 /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
+		F50A4FC0270CBD110004AF93 /* Web.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Web.storyboard; sourceTree = "<group>"; };
+		F50A4FC2270CBD260004AF93 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		F50A4FC4270CBD330004AF93 /* WebViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +79,7 @@
 				F50A4FA4270C3A590004AF93 /* Startup */,
 				F50A4FAF270C3F8A0004AF93 /* Service */,
 				F50A4FA8270C3C780004AF93 /* Main */,
+				F50A4FBF270CBCDC0004AF93 /* Web */,
 				F50A4F99270C2D5D0004AF93 /* Assets.xcassets */,
 			);
 			path = Repositories;
@@ -93,6 +102,7 @@
 				F50A4FA9270C3CEA0004AF93 /* MainViewController.swift */,
 				F50A4FAB270C3D8F0004AF93 /* MainViewModel.swift */,
 				F50A4FAD270C3DB50004AF93 /* MainModel.swift */,
+				F50A4FBD270CBABA0004AF93 /* MainRouter.swift */,
 				F50A4FB8270C77200004AF93 /* ListCell */,
 			);
 			path = Main;
@@ -115,6 +125,16 @@
 				F50A4FBA270C77420004AF93 /* ListTableViewCell.xib */,
 			);
 			path = ListCell;
+			sourceTree = "<group>";
+		};
+		F50A4FBF270CBCDC0004AF93 /* Web */ = {
+			isa = PBXGroup;
+			children = (
+				F50A4FC0270CBD110004AF93 /* Web.storyboard */,
+				F50A4FC2270CBD260004AF93 /* WebViewController.swift */,
+				F50A4FC4270CBD330004AF93 /* WebViewModel.swift */,
+			);
+			path = Web;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,6 +196,7 @@
 			files = (
 				F50A4FA7270C3C4F0004AF93 /* Main.storyboard in Resources */,
 				F50A4FBC270C77420004AF93 /* ListTableViewCell.xib in Resources */,
+				F50A4FC1270CBD110004AF93 /* Web.storyboard in Resources */,
 				F50A4F9D270C2D5D0004AF93 /* LaunchScreen.storyboard in Resources */,
 				F50A4F9A270C2D5D0004AF93 /* Assets.xcassets in Resources */,
 			);
@@ -191,11 +212,14 @@
 				F50A4FAE270C3DB50004AF93 /* MainModel.swift in Sources */,
 				F50A4FBB270C77420004AF93 /* ListTableViewCell.swift in Sources */,
 				F50A4FB3270C3F8A0004AF93 /* DefaultService.swift in Sources */,
+				F50A4FC3270CBD260004AF93 /* WebViewController.swift in Sources */,
 				F50A4F91270C2D5A0004AF93 /* AppDelegate.swift in Sources */,
 				F50A4FB5270C4EA70004AF93 /* SearchService.swift in Sources */,
 				F50A4FB7270C50030004AF93 /* ServiceModel.swift in Sources */,
+				F50A4FC5270CBD330004AF93 /* WebViewModel.swift in Sources */,
 				F50A4FAA270C3CEA0004AF93 /* MainViewController.swift in Sources */,
 				F50A4FAC270C3D8F0004AF93 /* MainViewModel.swift in Sources */,
+				F50A4FBE270CBABA0004AF93 /* MainRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

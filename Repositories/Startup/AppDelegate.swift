@@ -14,7 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let storyboard: UIStoryboard = UIStoryboard(name: "Main",
                                                     bundle: nil)
         if let mainVc = storyboard.instantiateInitialViewController() as? MainViewController {
-            mainVc.viewModel = .init()
+            let mainRouter: MainRouter = .init(viewController: mainVc)
+            mainVc.viewModel = MainViewModel(router: mainRouter)
             window?.rootViewController = UINavigationController(rootViewController: mainVc)
             window?.makeKeyAndVisible()
         }

@@ -24,16 +24,6 @@ class MainViewController: UIViewController {
                            forCellReuseIdentifier: ListTableViewCell.identifier)
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 // MARK: - MainViewModel Protocol
@@ -83,6 +73,16 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         viewModel.willDisplayCell(at: indexPath.row)
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        dismissKeyboard()
+        viewModel.didSelectCell(at: indexPath.row)
+    }
+    
+    private func dismissKeyboard() {
+        searchBar.showsCancelButton = false
+        searchBar.resignFirstResponder()
+    }
 }
 
 // MARK: - SearchBar Delegate
@@ -93,13 +93,11 @@ extension MainViewController: UISearchBarDelegate {
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.showsCancelButton = false
-        searchBar.resignFirstResponder()
+        dismissKeyboard()
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.showsCancelButton = false
-        searchBar.resignFirstResponder()
+        dismissKeyboard()
         viewModel.search(searchBar.text ?? "")
     }
 }

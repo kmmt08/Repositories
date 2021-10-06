@@ -13,6 +13,7 @@ protocol MainViewModelProtocol: AnyObject {
 
 class MainViewModel {
     private let searchService: SearchServiceProtocol
+    private let router: MainRouterProtocol
     weak var delegate: MainViewModelProtocol?
     
     private var currentSearchText: String = ""
@@ -27,8 +28,10 @@ class MainViewModel {
         }
     }
     
-    init(searchService: SearchServiceProtocol = SearchService()) {
+    init(searchService: SearchServiceProtocol = SearchService(),
+         router: MainRouterProtocol) {
         self.searchService = searchService
+        self.router = router
     }
     
     func search(_ text: String) {
@@ -70,5 +73,11 @@ class MainViewModel {
             isLoading = true
             search(currentSearchText)
         }
+    }
+    
+    func didSelectCell(at row: Int) {
+        let item = items[row]
+        router.navigateToWebview(with: item.htmlUrl,
+                                 name: item.name)
     }
 }

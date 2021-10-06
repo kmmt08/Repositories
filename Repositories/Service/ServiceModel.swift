@@ -16,13 +16,15 @@ struct SearchRespositories {
         }
         
         struct Items: Decodable {
+            let name: String
             let fullName: String
             let description: String?
-            let url: String
+            let htmlUrl: String
             
             private enum CodingKeys: String, CodingKey {
                 case fullName = "full_name"
-                case description, url
+                case htmlUrl = "html_url"
+                case name, description
             }
         }
     }
